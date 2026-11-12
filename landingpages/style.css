@@ -1,0 +1,29 @@
+:root { font-family: Arial, Helvetica, sans-serif; color: #19233a; background: #f3f6fb; }
+* { box-sizing: border-box; }
+body { min-width: 320px; min-height: 100vh; margin: 0; }
+button, input { font: inherit; }
+.page-shell { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 24px; background: linear-gradient(145deg, #eef4fc, #faf8f4); }
+.reset-card { width: 100%; max-width: 430px; padding: 38px 44px 32px; border: 1px solid #e5eaf2; border-radius: 18px; background: #fff; box-shadow: 0 20px 55px rgba(32, 51, 84, .1); }
+.brand { display: block; color: #19233a; font-size: 24px; font-weight: 700; letter-spacing: -.5px; text-align: center; text-decoration: none; }
+.brand-mark { color: #1877f2; margin-right: 5px; }
+.intro { margin: 42px 0 30px; text-align: center; }
+.icon { width: 46px; height: 46px; display: grid; place-items: center; margin: 0 auto 18px; border-radius: 50%; color: #1877f2; background: #eaf2ff; font-size: 25px; }
+h1 { margin: 0 0 10px; font-size: 29px; line-height: 1.25; }
+.intro p { margin: 0; color: #6d7a8f; font-size: 14px; line-height: 21px; }
+.field { margin-bottom: 18px; }
+.field label { display: block; margin: 0 0 8px; color: #40506a; font-size: 13px; font-weight: 700; }
+.field small { display: block; margin-top: 7px; color: #8894a6; font-size: 11px; }
+.input-wrap { position: relative; }
+input { width: 100%; min-height: 48px; padding: 0 66px 0 14px; border: 1px solid #dfe5ee; border-radius: 8px; outline: none; color: #19233a; background: #f9fafc; }
+input:focus { border-color: #1877f2; background: #fff; box-shadow: 0 0 0 3px rgba(24,119,242,.13); }
+.password-toggle { position: absolute; top: 2px; right: 2px; min-width: 58px; height: 44px; padding: 0 8px; border: 0; color: #1877f2; background: transparent; font-size: 12px; font-weight: 700; cursor: pointer; }
+.submit-button { width: 100%; min-height: 48px; margin-top: 5px; border: 0; border-radius: 8px; color: #fff; background: #1877f2; font-weight: 700; cursor: pointer; }
+.submit-button:hover { background: #1268d7; }
+.submit-button:disabled { opacity: .65; cursor: wait; }
+.alert { margin: 0 0 20px; padding: 12px 14px; border-radius: 7px; color: #9d302b; background: #fff0ef; font-size: 13px; line-height: 19px; }
+.alert.success { color: #216b4a; background: #edf9f2; }
+.login-link { margin: 24px 0 0; text-align: center; font-size: 13px; }
+.login-link a { color: #1877f2; font-weight: 700; text-decoration: none; }
+.login-link a:hover { text-decoration: underline; }
+.security-note { margin: 27px 0 0; color: #98a2b1; font-size: 11px; line-height: 17px; text-align: center; }
+@media (max-width: 480px) { .page-shell { padding: 0; background: #fff; } .reset-card { min-height: 100vh; padding: 30px 24px 24px; border: 0; border-radius: 0; box-shadow: none; } .intro { margin-top: 48px; } }

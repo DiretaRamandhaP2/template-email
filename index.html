@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Sign in to Luma" />
+    <title>Log in · Luma</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+  </head>
+  <style>
+    :root { font-family: "DM Sans", sans-serif; color: #19233a; background: #f0f4fb; font-synthesis: none; }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-width: 320px; min-height: 100vh; }
+    button, input { font: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    .page-shell { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 28px 24px; background: radial-gradient(circle at 15% 15%, #fff 0, transparent 38%), linear-gradient(145deg, #edf3fb, #f8f6f1); }
+    .login-card { width: 100%; max-width: 448px; min-height: 700px; padding: 28px 48px 25px; display: flex; flex-direction: column; background: rgba(255,255,255,.92); border: 1px solid rgba(255,255,255,.9); border-radius: 22px; box-shadow: 0 20px 60px rgba(32, 51, 84, .11); }
+    .topbar { display: flex; justify-content: space-between; align-items: center; }
+    .language { min-height: 44px; padding: 0; border: 0; background: none; color: #778198; font-size: 12px; cursor: pointer; }
+    .language span { margin-left: 3px; font-size: 15px; }
+    .topbar-dot { width: 8px; height: 8px; border-radius: 50%; background: #f1bf58; box-shadow: 0 0 0 5px #fff5df; }
+    .intro { margin: 40px 0 34px; text-align: center; }
+    .brand-mark { height: 22px; display: flex; align-items: end; justify-content: center; gap: 3px; margin-bottom: 8px; }
+    .brand-mark span { display: block; width: 5px; border-radius: 5px; background: #ef6d63; transform: rotate(25deg); }
+    .brand-mark span:nth-child(1) { height: 11px; }.brand-mark span:nth-child(2) { height: 19px; background: #f2b94b; }.brand-mark span:nth-child(3) { height: 14px; background: #6389e9; }
+    h1 { margin: 0; color: #19233a; font-family: "Playfair Display", serif; font-size: clamp(42px, 9vw, 56px); line-height: 1; letter-spacing: -.04em; }
+    .intro p { margin: 11px 0 0; color: #8a93a5; font-size: 13px; }
+    .login-form { display: flex; flex-direction: column; }
+    .facebook-button, .login-button { width: 100%; min-height: 48px; border: 0; border-radius: 8px; color: white; font-weight: 600; cursor: pointer; transition: transform .2s, background .2s, box-shadow .2s; }
+    .facebook-button { display: flex; align-items: center; justify-content: center; gap: 9px; background: #4267b2; }
+    .facebook-button svg { width: 19px; height: 19px; }
+    .facebook-button:hover { background: #36599c; box-shadow: 0 6px 16px rgba(66,103,178,.2); }
+    .facebook-button:active, .login-button:not(:disabled):active { transform: scale(.98); }
+    .divider { display: flex; align-items: center; gap: 13px; margin: 25px 0 20px; color: #b0b7c3; font-size: 10px; letter-spacing: .08em; }
+    .divider span { height: 1px; flex: 1; background: #e5e8ed; }.divider b { font-weight: 600; }
+    .field-group { margin-bottom: 14px; }.field-group label { display: block; margin: 0 0 7px 2px; color: #667085; font-size: 11px; font-weight: 600; }
+    input { width: 100%; min-height: 47px; padding: 0 14px; color: #19233a; background: #f7f8fa; border: 1px solid #e4e7ec; border-radius: 8px; outline: none; transition: border .2s, box-shadow .2s, background .2s; }
+    input:focus { background: #fff; border-color: #6389e9; box-shadow: 0 0 0 3px rgba(99,137,233,.14); }
+    .password-wrap { position: relative; }.password-wrap input { padding-right: 60px; }.toggle-password { position: absolute; top: 2px; right: 2px; min-width: 52px; height: 43px; border: 0; background: transparent; color: #6389e9; font-size: 11px; font-weight: 700; cursor: pointer; }
+    .forgot-link { align-self: flex-end; min-height: 44px; padding-top: 10px; color: #6389e9; font-size: 11px; font-weight: 600; text-decoration: none; }.forgot-link:hover, .signup a:hover { text-decoration: underline; }
+    .login-button { margin-top: 6px; background: #b6c9f3; }.login-button:not(:disabled) { background: #6389e9; }.login-button:not(:disabled):hover { background: #5279dc; box-shadow: 0 7px 18px rgba(99,137,233,.25); }.login-button:disabled { cursor: not-allowed; }
+    .form-message { min-height: 17px; margin: 9px 0 0; color: #6389e9; font-size: 11px; text-align: center; }.signup { margin: auto 0 25px; color: #8a93a5; font-size: 12px; text-align: center; }.signup a { color: #6389e9; font-weight: 700; text-decoration: none; }
+    .branding { display: flex; flex-direction: column; align-items: center; gap: 3px; color: #b0b7c3; font-size: 10px; }.branding strong { color: #69758c; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; }.branding i { width: 30px; height: 3px; margin-top: 8px; border-radius: 3px; background: #d9dee7; }
+    @media (max-width: 480px) { .page-shell { padding: 0; background: #fff; }.login-card { min-height: 100vh; padding: 22px 24px 20px; border: 0; border-radius: 0; box-shadow: none; }.intro { margin-top: 44px; margin-bottom: 38px; } }
+    @media (min-width: 481px) and (max-width: 1024px) { .page-shell { padding: 40px 24px; } }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition-duration: .01ms !important; } }
+  </style>
+  <body>
+    <main class="page-shell">
+      <section class="login-card" aria-labelledby="brand-name">
+        <div class="topbar">
+          <button class="language" type="button" aria-label="Choose language">English <span aria-hidden="true">⌄</span></button>
+          <span class="topbar-dot" aria-hidden="true"></span>
+        </div>
+
+        <div class="intro">
+          <div class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></div>
+          <h1 id="brand-name">Luma</h1>
+          <p>Make space for what matters.</p>
+        </div>
+
+        <form class="login-form" id="login-form">
+          <button class="facebook-button" type="button">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path fill="currentColor" d="M13.5 21v-8h2.7l.4-3h-3.1V8.1c0-.9.3-1.5 1.6-1.5h1.7V3.9c-.3 0-1.4-.1-2.6-.1-2.6 0-4.4 1.6-4.4 4.5V10H7v3h2.8v8h3.7Z"/></svg>
+            Continue with Facebook
+          </button>
+
+          <div class="divider"><span></span><b>OR</b><span></span></div>
+
+          <div class="field-group">
+            <label for="identity">Phone number, username, or email</label>
+            <input id="identity" name="identity" type="text" autocomplete="username" required />
+          </div>
+          <div class="field-group">
+            <label for="password">Password</label>
+            <div class="password-wrap">
+              <input id="password" name="password" type="password" autocomplete="current-password" required />
+              <button class="toggle-password" id="toggle-password" type="button" aria-label="Show password">Show</button>
+            </div>
+          </div>
+
+          <a class="forgot-link" href="#forgot-password">Forgot password?</a>
+          <button class="login-button" id="login-button" type="submit" disabled>Log In</button>
+          <p class="form-message" id="form-message" role="status" aria-live="polite"></p>
+        </form>
+
+        <p class="signup">Don't have an account? <a href="#sign-up">Sign up</a></p>
+        <footer class="branding"><span>from</span><strong>northstar</strong><i aria-hidden="true"></i></footer>
+      </section>
+    </main>
+    <script>
+      const identityInput = document.querySelector('#identity');
+      const passwordInput = document.querySelector('#password');
+      const loginButton = document.querySelector('#login-button');
+      const loginForm = document.querySelector('#login-form');
+      const togglePassword = document.querySelector('#toggle-password');
+      const message = document.querySelector('#form-message');
+
+      function updateButtonState() {
+        loginButton.disabled = !identityInput.value.trim() || !passwordInput.value.trim();
+      }
+
+      identityInput.addEventListener('input', updateButtonState);
+      passwordInput.addEventListener('input', updateButtonState);
+
+      togglePassword.addEventListener('click', () => {
+        const isPassword = passwordInput.type === 'password';
+        passwordInput.type = isPassword ? 'text' : 'password';
+        togglePassword.textContent = isPassword ? 'Hide' : 'Show';
+        togglePassword.setAttribute('aria-label', `${isPassword ? 'Hide' : 'Show'} password`);
+      });
+
+      loginForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        message.textContent = 'Thanks! Your login details are ready to submit.';
+      });
+    </script>
+  </body>
+</html>
